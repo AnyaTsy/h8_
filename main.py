@@ -2,17 +2,18 @@ from datetime import datetime, timedelta, date
 
 def get_birthdays_per_week(users):
     today = date.today()
-    monday = today - timedelta(days=today.weekday())
+    monday = today 
     sunday = monday + timedelta(days=6)
-    
+    current_year = today.year
     weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     
     birthdays = {}
     for user in users:
         name = user['name']
         bday = user['birthday']
-        if isinstance(bday, datetime):
-            bday = bday.date()
+        bday = bday.replace(year=current_year)
+        if bday < monday:
+            bday = bday.replace(year=current_year+1)
         
         # Перевірка, чи день народження випадає на вихідний
         if bday.weekday() >= 5:  # 5 - субота, 6 - неділя
