@@ -2,10 +2,8 @@ from datetime import datetime, timedelta, date
 
 def get_birthdays_per_week(users):
     today = date.today()
-    current_year = today.year
     monday = today - timedelta(days=today.weekday())
     sunday = monday + timedelta(days=6)
-    next_monday = monday + timedelta(weeks=1)
     
     weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     
@@ -26,6 +24,7 @@ def get_birthdays_per_week(users):
             if weekday not in birthdays:
                 birthdays[weekday] = []
             birthdays[weekday].append(name)
+            
         
-             
+    print(birthdays)        
     return birthdays
