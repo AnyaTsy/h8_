@@ -27,6 +27,5 @@ def get_birthdays_per_week(users):
                 birthdays[weekday] = []
             birthdays[weekday].append(name)
         
-        
-    print(birthdays)        
+             
     return birthdays
